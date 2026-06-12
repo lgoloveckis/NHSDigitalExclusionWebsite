@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center p-5 rounded hero-section">
+    <h1 class="display-4">Digital Exclusion Support System</h1>
+
+    <p class="lead mt-3">
+        A portfolio web application designed to identify patients who may need assisted support with online booking.
+    </p>
+
+    <p class="text-muted">
+        Built with ASP.NET Core MVC, Entity Framework Core, MySQL, automated risk scoring, ticket creation, and dashboard analytics.
+    </p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="Dashboard">
+            Open Dashboard
+        </a>
+
+        <a class="btn btn-outline-secondary btn-lg" asp-controller="Patients" asp-action="Index">
+            Manage Patients
+        </a>
+    </div>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+        <h3>👤 Patient Management</h3>
+        <p>Create, view, edit and manage patient records.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+        <h3>⚠️ Risk Detection</h3>
+        <p>Automatically calculates RiskScore and RiskLevel from booking data.</p>
+            </div>
+        </div>
+    </div>
+
+            <div class="col-md-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+        <h3>🎫 Ticket Workflow</h3>
+        <p>High-risk bookings automatically create assisted support tickets.</p>
+            </div>
+        </div>
+    </div>
+
+                    <div class="col-md-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body text-center">
+        <h3>📋 Audit Trail</h3>
+        <p>Tracks ticket status changes, including who changed them and when.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-5 text-center">
+    <h2>Technologies Used</h2>
+
+    <p>
+        ASP.NET Core MVC • Entity Framework Core • MySQL •
+        Bootstrap • Identity Authentication • Role-Based Authorization
+    </p>
+</div>
+<div class="mt-5 text-center">
+    <h2>Key Features</h2>
+
+    <p>✓ Patient Management</p>
+    <p>✓ Booking Monitoring</p>
+    <p>✓ Automated Risk Scoring</p>
+    <p>✓ Support Ticket Workflow</p>
+    <p>✓ Role-Based Security</p>
+    <p>✓ Ticket Audit Logging</p>
+</div>

@@ -1,0 +1,138 @@
+@model IEnumerable<NHSDigitalExclusionWebsite.Models.Patient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+  @* to add search box to Patient page Index for autocomplete suggestions for Patients search *@
+
+<form asp-action="Index" method="get">
+    <p>
+        Search patient:
+        <input type="text"
+               id="patientSearch"
+               name="searchString"
+               value="@ViewData["CurrentFilter"]"
+               autocomplete="off" />
+
+        <div id="suggestionsBox" class="list-group" style="width: 300px;"></div>
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Clear</a>
+    </p>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NhsNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.NhsNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.City)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PatientId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PatientId">Details</a> |
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.PatientId">Delete</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+    @*  JavaScript for / to be able to use autocomplete suggestions for Patient search *@
+<script>
+    const searchBox = document.getElementById("patientSearch");
+    const suggestionsBox = document.getElementById("suggestionsBox");
+
+    searchBox.addEventListener("keyup", function () {
+        const term = searchBox.value;
+
+        if (term.length < 1) {
+            suggestionsBox.innerHTML = "";
+            return;
+        }
+
+        fetch('/Patients/SearchSuggestions?term=' + encodeURIComponent(term))
+            .then(response => response.json())
+            .then(data => {
+                suggestionsBox.innerHTML = "";
+
+                data.forEach(item => {
+                    const option = document.createElement("a");
+                    option.href = "#";
+                    option.className = "list-group-item list-group-item-action";
+                    option.textContent = item;
+
+                    option.addEventListener("click", function () {
+                        searchBox.value = item.split(" - ")[0];
+                        suggestionsBox.innerHTML = "";
+                    });
+
+                    suggestionsBox.appendChild(option);
+                });
+            });
+    });
+</script>

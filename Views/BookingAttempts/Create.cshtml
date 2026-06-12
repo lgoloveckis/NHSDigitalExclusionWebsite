@@ -1,0 +1,74 @@
+@model NHSDigitalExclusionWebsite.Models.BookingAttempt
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>BookingAttempt</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <select asp-for="PatientId" class="form-control" asp-items="ViewBag.PatientId">
+                <option value="">-- Select Patient --</option></select>
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookingChannel" class="control-label"></label>
+                <select asp-for="BookingChannel" class="form-control">
+                    <option value="">-- Select Channel --</option>
+                    <option value="Online">Online</option>
+                    <option value="Phone">Phone</option>
+                    <option value="Walk-in">Walk-in</option>
+                </select>
+                <span asp-validation-for="BookingChannel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookingOutcome" class="control-label"></label>
+                <select asp-for="BookingOutcome" class="form-control">
+                    <option value="">-- Select Outcome --</option>
+                    <option value="Success">Success</option>
+                    <option value="Failed">Failed</option>
+                </select>
+                <span asp-validation-for="BookingOutcome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FailureReason" class="control-label"></label>
+                <select asp-for="FailureReason" class="form-control" asp-items="ViewBag.FailureReason">
+                    <option value="">-- Select Failure Reason --</option>
+                </select>
+                <span asp-validation-for="FailureReason" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AttemptDatetime" class="control-label"></label>
+                <input asp-for="AttemptDatetime" class="form-control" />
+                <span asp-validation-for="AttemptDatetime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

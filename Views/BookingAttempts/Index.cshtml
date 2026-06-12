@@ -1,0 +1,98 @@
+﻿@model IEnumerable<NHSDigitalExclusionWebsite.Models.BookingAttempt>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+    @* to export csv file *@
+    <a asp-action="ExportCsv" class="btn btn-success mb-3">
+        Export CSV
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingChannel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingOutcome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FailureReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttemptDatetime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RiskScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RiskLevel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.BookingChannel)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.BookingOutcome)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FailureReason)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.AttemptDatetime)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.RiskScore)
+            </td>
+                <td>
+                    @if (item.RiskLevel == "Low")
+                    {
+                        <span class="badge bg-success">🟢 Low</span>
+                    }
+                    else if (item.RiskLevel == "Medium")
+                    {
+                        <span class="badge bg-warning text-dark">🟡 Medium</span>
+                    }
+                    else if (item.RiskLevel == "High")
+                    {
+                        <span class="badge bg-danger">🔴 High</span>
+                    }
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

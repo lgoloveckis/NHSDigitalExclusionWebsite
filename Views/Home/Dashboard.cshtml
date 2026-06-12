@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Total Patients</h4>
+            <h2>@ViewBag.TotalPatients</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Total Booking Attempts</h4>
+            <h2>@ViewBag.TotalBookings</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Failed Bookings</h4>
+            <h2>@ViewBag.FailedBookings</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>High Risk Bookings</h4>
+            <h2>@ViewBag.HighRiskBookings</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Open Tickets</h4>
+            <h2>@ViewBag.OpenTickets</h2>
+        </div>
+    </div>
+</div>
+
+
+<hr />
+
+
+<div class="card shadow-sm mt-4 static-card">
+    <div class="card-body">
+
+        <h3>Analytics Charts</h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div style="height:300px;">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div style="height:300px;">
+                    <canvas id="ticketChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const riskChart = document.getElementById('riskChart');
+
+    new Chart(riskChart, {
+        type: 'bar',
+        data: {
+            labels: ['Low', 'Medium', 'High'],
+            datasets: [{
+                label: 'Risk Levels',
+                data: [
+                    @ViewBag.LowRisk,
+                    @ViewBag.MediumRisk,
+                    @ViewBag.HighRisk
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    const ticketChart = document.getElementById('ticketChart');
+
+    new Chart(ticketChart, {
+        type: 'pie',
+        data: {
+            labels: ['Open', 'In Progress', 'Closed'],
+            datasets: [{
+                label: 'Ticket Status',
+                data: [
+                    @ViewBag.OpenTicketsChart,
+                    @ViewBag.InProgressTicketsChart,
+                    @ViewBag.ClosedTicketsChart
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+</script>

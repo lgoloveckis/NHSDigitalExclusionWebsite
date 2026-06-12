@@ -1,0 +1,85 @@
+@model IEnumerable<NHSDigitalExclusionWebsite.Models.AssistedBookingTicket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@* message displaying if data in AssistedBookingTickets has been changed *@
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedStaff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResolvedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.BookingId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SupportStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.AssignedStaff)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SupportNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ResolvedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Reason)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TicketId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TicketId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
