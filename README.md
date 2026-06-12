@@ -25,6 +25,29 @@ A portfolio web application developed using ASP.NET Core MVC, Entity Framework C
 
 This project was created as a portfolio application to demonstrate web development, database management, authentication, auditing and analytics skills.
 
+## Screenshots
+
+## Home Page
+![Home Page](Screenshots/HomePage.png)
+
+## Dashboard
+![Dashboard](Screenshots/Dashboard.png)
+
+## Patients
+![Patients](Screenshots/Patients.png)
+
+## Booking Attempts
+![Booking Attempts](Screenshots/BookingAttempts.png)
+
+## Failure Reasons
+![Failure Reasons](Screenshots/FailureReasons.png)
+
+## Tickets
+![Tickets](Screenshots/Tickets.png)
+
+## Audit Logs
+![Audit Logs](Screenshots/AuditLogs.png)
+
 ## Author
 
 Leonids Goloveckis
