@@ -1,6 +1,10 @@
 # NHS Digital Exclusion Support System
 
-A portfolio web application developed using ASP.NET Core MVC, Entity Framework Core and SQL Server.
+![Home Page](Screenshots/HomePage.png)
+
+## Project Overview
+
+The NHS Digital Exclusion Support System is a portfolio web application designed to identify patients who may need assisted support with online booking. The system records patients, booking attempts, failure reasons and support tickets. It also includes automated risk scoring, audit logging and Power BI analytics.
 
 ## Features
 
@@ -17,9 +21,11 @@ A portfolio web application developed using ASP.NET Core MVC, Entity Framework C
 - ASP.NET Core MVC
 - Entity Framework Core
 - SQL Server
+- MySQL
+- LINQ
 - Bootstrap
-- Chart.js
-- ASP.NET Identity
+- Power BI
+- GitHub
 
 ## Purpose
 
