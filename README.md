@@ -20,12 +20,19 @@ The NHS Digital Exclusion Support System is a portfolio web application designed
 
 - ASP.NET Core MVC
 - Entity Framework Core
-- SQL Server
 - MySQL
 - LINQ
 - Bootstrap
 - Power BI
 - GitHub
+
+## Security Features
+
+- ASP.NET Core Identity Authentication
+- Role-Based Authorization
+- Entity Framework Core (SQL Injection Protection)
+- Audit Logging
+- Input Validation
 
 ## Purpose
 
