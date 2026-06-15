@@ -25,7 +25,7 @@ A portfolio web application developed using ASP.NET Core MVC, Entity Framework C
 
 This project was created as a portfolio application to demonstrate web development, database management, authentication, auditing and analytics skills.
 
-## Screenshots
+### Screenshots
 
 ## Home Page
 ![Home Page](Screenshots/HomePage.png)
@@ -48,6 +48,20 @@ This project was created as a portfolio application to demonstrate web developme
 ## Audit Logs
 ![Audit Logs](Screenshots/AuditLogs.png)
 
-## Author
+### Power BI Analytics
+
+## Dashboard Overview
+![Power BI Dashboard](PowerBI/DashboardOverview.png)
+
+## Map Distribution
+![Map Distribution](PowerBI/MapDistribution.png)
+
+## Risk Analytics
+![Risk Analytics](PowerBI/RiskAnalytics.png)
+
+## Failure Reasons Analytics
+![Failure Reasons](PowerBI/FailureReasonsAnalytics.png)
+
+### Author
 
 Leonids Goloveckis
